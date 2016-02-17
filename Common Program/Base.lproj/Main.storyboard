@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Common_Program" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,72 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Word Here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnC-M1-Qa2">
+                                <rect key="frame" x="234" y="125" width="132" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FwB-ln-7FQ"/>
+                                    <constraint firstAttribute="width" constant="132" id="jFc-6i-WN3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jc3-lG-TKO">
+                                <rect key="frame" x="278" y="216" width="44" height="30"/>
+                                <state key="normal" title="Check"/>
+                                <connections>
+                                    <action selector="Check:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guv-uJ-LLh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="May-x5-MHc">
+                                <rect key="frame" x="266" y="249" width="68" height="30"/>
+                                <state key="normal" title="Add Word"/>
+                                <connections>
+                                    <action selector="AddWord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cnU-1F-zbG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYK-8m-jYa">
+                                <rect key="frame" x="266" y="359" width="68" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="38e-GT-s24"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="75p-WC-WoO">
+                                <rect key="frame" x="154" y="168" width="292" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="jhl-Kb-eIw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jc3-lG-TKO" firstAttribute="centerX" secondItem="75p-WC-WoO" secondAttribute="centerX" id="4h6-f5-M9t"/>
+                            <constraint firstItem="gnC-M1-Qa2" firstAttribute="centerX" secondItem="75p-WC-WoO" secondAttribute="centerX" id="Eyj-Gh-93f"/>
+                            <constraint firstItem="May-x5-MHc" firstAttribute="leading" secondItem="sYK-8m-jYa" secondAttribute="leading" id="GN7-9e-ZSw"/>
+                            <constraint firstItem="May-x5-MHc" firstAttribute="top" secondItem="Jc3-lG-TKO" secondAttribute="bottom" constant="3" id="HG0-Xf-hjY"/>
+                            <constraint firstItem="Jc3-lG-TKO" firstAttribute="centerX" secondItem="May-x5-MHc" secondAttribute="centerX" id="WjG-1A-av8"/>
+                            <constraint firstItem="sYK-8m-jYa" firstAttribute="top" secondItem="May-x5-MHc" secondAttribute="bottom" constant="80" id="j4U-f4-3rU"/>
+                            <constraint firstItem="Jc3-lG-TKO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jGW-8l-FAg"/>
+                            <constraint firstItem="75p-WC-WoO" firstAttribute="top" secondItem="gnC-M1-Qa2" secondAttribute="bottom" constant="22" id="qM3-Qj-TH7"/>
+                            <constraint firstItem="Jc3-lG-TKO" firstAttribute="top" secondItem="75p-WC-WoO" secondAttribute="bottom" constant="18" id="xLd-4l-cMj"/>
+                            <constraint firstItem="gnC-M1-Qa2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="105" id="yXe-CZ-MJ8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Label" destination="gnC-M1-Qa2" id="L0T-4h-UNG"/>
+                        <outlet property="Progress" destination="sYK-8m-jYa" id="a8Q-0O-Fzh"/>
+                        <outlet property="UserText" destination="75p-WC-WoO" id="cxp-kU-KaD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="231"/>
         </scene>
     </scenes>
 </document>
