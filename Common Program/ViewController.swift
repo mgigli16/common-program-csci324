@@ -8,8 +8,9 @@
 
 import UIKit
 
+var words: Set<String> = ["Dog", "Cat", "Horse", "People"]
+
 class ViewController: UIViewController {
-    var words: Set<String> = ["Dog", "Cat", "Horse", "People"]
 
     @IBOutlet weak var Label: UILabel!
     

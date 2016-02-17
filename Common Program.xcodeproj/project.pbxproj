@@ -14,6 +14,7 @@
 		C908FA091C736627003D025D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C908FA071C736627003D025D /* LaunchScreen.storyboard */; };
 		C908FA141C736627003D025D /* Common_ProgramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908FA131C736627003D025D /* Common_ProgramTests.swift */; };
 		C908FA1F1C736627003D025D /* Common_ProgramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908FA1E1C736627003D025D /* Common_ProgramUITests.swift */; };
+		C97610C21C7518FB0070A32E /* dictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = C97610C11C7518FB0070A32E /* dictionary.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C908FA1A1C736627003D025D /* Common ProgramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Common ProgramUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C908FA1E1C736627003D025D /* Common_ProgramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common_ProgramUITests.swift; sourceTree = "<group>"; };
 		C908FA201C736627003D025D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C97610C11C7518FB0070A32E /* dictionary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dictionary.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				C908F9FE1C736627003D025D /* AppDelegate.swift */,
 				C908FA001C736627003D025D /* ViewController.swift */,
 				C908FA021C736627003D025D /* Main.storyboard */,
+				C97610C11C7518FB0070A32E /* dictionary.txt */,
 				C908FA051C736627003D025D /* Assets.xcassets */,
 				C908FA071C736627003D025D /* LaunchScreen.storyboard */,
 				C908FA0A1C736627003D025D /* Info.plist */,
@@ -231,6 +234,7 @@
 			files = (
 				C908FA091C736627003D025D /* LaunchScreen.storyboard in Resources */,
 				C908FA061C736627003D025D /* Assets.xcassets in Resources */,
+				C97610C21C7518FB0070A32E /* dictionary.txt in Resources */,
 				C908FA041C736627003D025D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +488,7 @@
 				C908FA251C736627003D025D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C908FA261C736627003D025D /* Build configuration list for PBXNativeTarget "Common ProgramTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				C908FA281C736627003D025D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C908FA291C736627003D025D /* Build configuration list for PBXNativeTarget "Common ProgramUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				C908FA2B1C736627003D025D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
