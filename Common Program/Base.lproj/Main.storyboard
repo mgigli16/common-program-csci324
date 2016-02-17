@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oWV-ec-Ubk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -72,6 +72,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Enter Word" id="SeC-bU-vwh"/>
                     <navigationItem key="navigationItem" title="Title" id="YMw-A2-ypp"/>
                     <connections>
                         <outlet property="Progress" destination="sYK-8m-jYa" id="a8Q-0O-Fzh"/>
@@ -80,12 +81,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="224"/>
+            <point key="canvasLocation" x="888" y="-72"/>
         </scene>
-        <!--View Controller-->
+        <!--Main-->
         <scene sceneID="Q75-2W-Fid">
             <objects>
-                <viewController id="pAA-KV-hGZ" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="pAA-KV-hGZ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MwU-Ly-QZB"/>
                         <viewControllerLayoutGuide type="bottom" id="03B-r3-is0"/>
@@ -126,7 +127,8 @@
                                         <exclude reference="EFY-eT-x7b"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="78" y="358" width="244" height="55"/>
                                     <mask key="constraints">
                                         <include reference="EFY-eT-x7b"/>
                                     </mask>
@@ -143,7 +145,8 @@
                                         <exclude reference="8RH-At-JKb"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="168" y="459" width="64" height="30"/>
                                     <mask key="constraints">
                                         <include reference="8RH-At-JKb"/>
                                     </mask>
@@ -153,6 +156,9 @@
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="421" width="360" height="30"/>
+                                </variation>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -212,11 +218,33 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Main" id="7VC-GL-UPA"/>
                     <navigationItem key="navigationItem" id="zfM-jS-Bgo"/>
+                    <connections>
+                        <outlet property="view" destination="jE7-zZ-DuV" id="GVx-Th-J5L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yah-rb-RRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="699" y="224"/>
+            <point key="canvasLocation" x="888" y="692"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="eM9-uG-GeX">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oWV-ec-Ubk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="eyf-NI-504">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="pAA-KV-hGZ" kind="relationship" relationship="viewControllers" id="cBT-2E-yz3"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="eGh-1Z-nAP"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGJ-0z-FH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48" y="224"/>
         </scene>
     </scenes>
 </document>
