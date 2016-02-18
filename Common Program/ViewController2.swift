@@ -10,11 +10,20 @@ import UIKit
 
 class ViewController2: UIViewController {
     
+    @IBOutlet weak var Instructions: UILabel!
+    @IBOutlet weak var OpenMessage: UILabel!
+    @IBOutlet weak var PathField: UITextField!
+    @IBOutlet weak var Output: UILabel!
+    @IBAction func SubmitPath(sender: AnyObject) {
+        Output.text = " "
+        var path = PathField.text
+        Output.text = path
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //print("I can't wait to push this project to Github")
-        //print("Test that I have updated successfully")
+
     }
     
     override func didReceiveMemoryWarning() {

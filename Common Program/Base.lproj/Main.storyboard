@@ -86,7 +86,7 @@
         <!--Main-->
         <scene sceneID="Q75-2W-Fid">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="pAA-KV-hGZ" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="pAA-KV-hGZ" customClass="ViewController2" customModule="Common_Program" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MwU-Ly-QZB"/>
                         <viewControllerLayoutGuide type="bottom" id="03B-r3-is0"/>
@@ -151,6 +151,9 @@
                                         <include reference="8RH-At-JKb"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="SubmitPath:" destination="pAA-KV-hGZ" eventType="touchUpInside" id="bm4-pE-PXj"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Path Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXE-HY-gab">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -160,6 +163,15 @@
                                     <rect key="frame" x="20" y="421" width="360" height="30"/>
                                 </variation>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTn-aC-LyI">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="184" y="272" width="37" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -181,6 +193,7 @@
                                 <exclude reference="ndf-Cn-Qlm"/>
                                 <exclude reference="D8q-Jc-HOK"/>
                                 <exclude reference="ZXE-HY-gab"/>
+                                <exclude reference="mTn-aC-LyI"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="SWy-R7-Rl0"/>
@@ -202,6 +215,7 @@
                                 <include reference="ndf-Cn-Qlm"/>
                                 <include reference="D8q-Jc-HOK"/>
                                 <include reference="ZXE-HY-gab"/>
+                                <include reference="mTn-aC-LyI"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="SWy-R7-Rl0"/>
@@ -221,6 +235,10 @@
                     <tabBarItem key="tabBarItem" title="Main" id="7VC-GL-UPA"/>
                     <navigationItem key="navigationItem" id="zfM-jS-Bgo"/>
                     <connections>
+                        <outlet property="Instructions" destination="ndf-Cn-Qlm" id="ogA-KA-ksM"/>
+                        <outlet property="OpenMessage" destination="Tww-rw-oLg" id="tpa-qf-ubH"/>
+                        <outlet property="Output" destination="mTn-aC-LyI" id="k2q-NJ-XOo"/>
+                        <outlet property="PathField" destination="ZXE-HY-gab" id="4Ln-l4-kIK"/>
                         <outlet property="view" destination="jE7-zZ-DuV" id="GVx-Th-J5L"/>
                     </connections>
                 </viewController>

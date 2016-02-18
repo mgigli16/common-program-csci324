@@ -103,12 +103,12 @@
 			children = (
 				C908F9FE1C736627003D025D /* AppDelegate.swift */,
 				C908FA001C736627003D025D /* ViewController.swift */,
+				C97610C71C7522AC0070A32E /* ViewController2.swift */,
 				C908FA021C736627003D025D /* Main.storyboard */,
 				C97610C11C7518FB0070A32E /* dictionary.txt */,
 				C908FA051C736627003D025D /* Assets.xcassets */,
 				C908FA071C736627003D025D /* LaunchScreen.storyboard */,
 				C908FA0A1C736627003D025D /* Info.plist */,
-				C97610C71C7522AC0070A32E /* ViewController2.swift */,
 			);
 			path = "Common Program";
 			sourceTree = "<group>";
