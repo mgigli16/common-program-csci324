@@ -175,8 +175,6 @@ while keepGoing {
 FindInDictionary(myDictionary, wordToFind: "Matt", verbose: true)
 FindInDictionary(myDictionary, wordToFind: "JT", verbose: true)
 AddToDictionary(&myDictionary, wordToAdd: "JT")
-print(myDictionary["JT"])
-
 
 print("Re-writing dictionary to \(argArray[2])")
 DictionaryToString(myDictionary, writeToPath: argArray[2])
