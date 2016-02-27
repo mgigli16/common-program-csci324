@@ -3,6 +3,7 @@ ANSI
 ASAP
 ASCII
 ATM's
+Abby
 Achilles
 Ada
 Ada's
@@ -699,6 +700,7 @@ Sunday
 Sunday's
 Sundays
 TCP
+TRUE
 TV's
 TeX
 TeX's

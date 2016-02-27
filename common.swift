@@ -129,7 +129,55 @@ func WriteFile(path:String, toWrite:String){
 	}
 }
 
+// String quicksort functions
 
+func StringQuickSort (inout A: [String], low: Int, high: Int) {
+	if low < high {
+		let p = QuickSortPartition(&A, lowIndex:low, highIndex: high)
+		let oldHigh = high
+		let oldLow = low
+		StringQuickSort(&A, low:oldLow, high:p-1)
+		StringQuickSort(&A, low: p+1, high: oldHigh)
+	}
+}
+
+func QuickSortPartition(inout A: [String], lowIndex: Int, highIndex: Int) -> Int {
+	let pivot = A[highIndex]
+	var i = lowIndex
+	var j = lowIndex
+	while j < highIndex {
+		if A[j] < pivot || A[j] == pivot{
+			let temp = A[i]
+			A[i] = A[j]
+			A[j] = temp
+			i = i+1
+		}
+		j++
+	}
+	let temp = A[i]
+	A[i] = A[highIndex]
+	A[highIndex] = temp
+	return i
+}
+
+//returns true if x is less than y
+func stringLessThan (let x: String, let y: String) -> Bool {
+	let shortLength = min(x.characters.count, y.characters.count)
+	var i = 0
+	while (i < shortLength) {
+		if(x[x.startIndex.advancedBy(i)] < y[y.startIndex.advancedBy(i)]) {
+			return true;
+		}
+		i++ //increment counter
+	}
+	//check for strings of same word beginning but different lengths
+	if( x.characters.count < y.characters.count) {
+		return true
+	}
+	return false
+}
+
+// End String Quicksort functions
 
 /********************************************
          PROGRAM IMPLEMENTATION
@@ -145,22 +193,32 @@ if argArray.count < 2 {
 // Take a file name as a command line argument?
 // argArray is the command line arguments
 // argArray = ["common.swift", arg1, arg2, arg3, ...]
-var longString = ReadFile(argArray[1])
-print("Reading \(argArray[1]) and building the program dictionary")
+var longString = ReadFile("dictionary2.txt")
+print("Reading dictionary2.txt and building the program dictionary")
 var myDictionary = BuildDictionary(longString)
 print("Dictionary Built")
 
-/* Interactive stuff
+
+// Read in from the parameterized file
+// search for each word from the file in the dicitonary
+//      If its not in the dictionary add it to an array of type string
+// After each word has been compared sort the array
+// Print out the array one by one asking the user if they'd like to add it to the dictionary
+//      if they want to add it, add it
+// Print some nice message that says youre done
+
+
+/* OLD TESTING CODE
 var keepGoing = true;
 
 while keepGoing {
 	print("Which word would you like to search for?")
 	var searchWord = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-	if !FindInDictionary(myDictionary, word: searchWord){
+	if !FindInDictionary(myDictionary, wordToFind: searchWord, verbose: true){
 		print("Would you like to add \(searchWord)?")
 		var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
 		if(choice == "yes" || choice == "y"){
-			AddToDictionary(&myDictionary, word: searchWord)
+			AddToDictionary(&myDictionary, wordToAdd: searchWord)
 		}
 	}
 	print("Would you like to search again?")
@@ -169,14 +227,14 @@ while keepGoing {
 		keepGoing = false;
 	}
 }
-*/
 
 // TEST CASES
 FindInDictionary(myDictionary, wordToFind: "Matt", verbose: true)
 FindInDictionary(myDictionary, wordToFind: "JT", verbose: true)
 AddToDictionary(&myDictionary, wordToAdd: "JT")
+*/
 
-print("Re-writing dictionary to \(argArray[2])")
-DictionaryToString(myDictionary, writeToPath: argArray[2])
+print("Re-writing dictionary to dictionary2.txt")
+DictionaryToString(myDictionary, writeToPath: "dictionary2.txt")
 
 
