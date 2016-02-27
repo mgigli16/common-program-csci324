@@ -3,7 +3,6 @@ ANSI
 ASAP
 ASCII
 ATM's
-Abby
 Achilles
 Ada
 Ada's
@@ -330,6 +329,7 @@ Denmark's
 Dijkstra
 Dijkstra's
 Diophantine
+Does
 Dylan
 Dylan's
 EDP
@@ -411,6 +411,7 @@ Hollands
 Honda
 Honda's
 Hz
+I
 I'd
 I'll
 I'm
@@ -700,7 +701,6 @@ Sunday
 Sunday's
 Sundays
 TCP
-TRUE
 TV's
 TeX
 TeX's
@@ -713,6 +713,7 @@ Tennessee's
 Texas
 Texas's
 Texases
+This
 Thursday
 Thursday's
 Thursdays
@@ -758,11 +759,13 @@ Warnock
 Warnock's
 Washington
 Washington's
+We
 Wednesday
 Wednesday's
 Wednesdays
 Weibull
 Weibull's
+Who
 Wilbur
 Wilbur's
 Willisson
@@ -788,6 +791,7 @@ Zealand's
 Zulu
 Zulu's
 Zulus
+a
 aback
 abaft
 abandon

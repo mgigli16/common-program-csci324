@@ -1,10 +1,9 @@
 //
 //  common.swift
-//  
 //
-//  Created by JT Kearney on 2/25/16.
-//
-//
+//  Abby Oliver, Matt Gigliotti, and JT Kearney
+//  This program implements a spell checker for a file that the
+//  user provides on the command line.
 
 import Foundation
 
@@ -187,12 +186,13 @@ var argArray = Process.arguments
 if argArray.count < 2 {
 	print("Need to include a file name in the program line")
 	print("It should look something like this:")
-	print("\n\tswift common.swift infilename outfilename\n")
+	print("\n\tswift common.swift TextFile\n")
 	exit(0)
 }
 // Take a file name as a command line argument?
 // argArray is the command line arguments
 // argArray = ["common.swift", arg1, arg2, arg3, ...]
+
 var longString = ReadFile("dictionary2.txt")
 print("Reading dictionary2.txt and building the program dictionary")
 var myDictionary = BuildDictionary(longString)
@@ -200,41 +200,46 @@ print("Dictionary Built")
 
 
 // Read in from the parameterized file
-// search for each word from the file in the dicitonary
-//      If its not in the dictionary add it to an array of type string
-// After each word has been compared sort the array
-// Print out the array one by one asking the user if they'd like to add it to the dictionary
-//      if they want to add it, add it
-// Print some nice message that says youre done
+var fileToBeRead = ReadFile(argArray[1]);
+var splitSet = NSCharacterSet(charactersInString: " \r\n!?.,-")
+var stringList = fileToBeRead.componentsSeparatedByCharactersInSet(splitSet)
 
-
-/* OLD TESTING CODE
-var keepGoing = true;
-
-while keepGoing {
-	print("Which word would you like to search for?")
-	var searchWord = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-	if !FindInDictionary(myDictionary, wordToFind: searchWord, verbose: true){
-		print("Would you like to add \(searchWord)?")
-		var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-		if(choice == "yes" || choice == "y"){
-			AddToDictionary(&myDictionary, wordToAdd: searchWord)
-		}
+// Get rid of items in the list that are ""
+var i = 0
+while i < stringList.count{
+	if stringList[i] == "" {
+		stringList.removeAtIndex(i)
 	}
-	print("Would you like to search again?")
+	i++
+}
+
+// search for each word from the file in the dicitonary
+var misspelledWords = [String]()
+for element in stringList {
+	if !FindInDictionary(myDictionary, wordToFind: element, verbose:false){
+		misspelledWords.append(element)
+	}
+}
+// print(misspelledWords)
+
+// After each word has been compared sort the array
+StringQuickSort(&misspelledWords, low: 0, high: misspelledWords.count-1)
+// print(misspelledWords)
+
+print("We found \(misspelledWords.count) misspelled words")
+// Print out the array one by one asking the user if they'd like to add it to the dictionary
+for word in misspelledWords{
+	print("Would you like to add \(word) to the dictionary? If so please type yes")
 	var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-	if(choice != "yes" && choice != "y"){
-		keepGoing = false;
+	if(choice == "yes"){
+		AddToDictionary(&myDictionary, wordToAdd: word)
+		print("\(word) was added to the dictionary")
 	}
 }
 
-// TEST CASES
-FindInDictionary(myDictionary, wordToFind: "Matt", verbose: true)
-FindInDictionary(myDictionary, wordToFind: "JT", verbose: true)
-AddToDictionary(&myDictionary, wordToAdd: "JT")
-*/
-
 print("Re-writing dictionary to dictionary2.txt")
 DictionaryToString(myDictionary, writeToPath: "dictionary2.txt")
+// Print some nice message that says youre done
+print("Have a nice day! 😝")
 
 
