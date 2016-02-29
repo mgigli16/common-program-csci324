@@ -74,6 +74,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52DFE1AE1C8491BB00380BBB /* textFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = textFiles;
+			sourceTree = "<group>";
+		};
 		C908F9F21C736627003D025D = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +104,7 @@
 		C908F9FD1C736627003D025D /* Common Program */ = {
 			isa = PBXGroup;
 			children = (
+				52DFE1AE1C8491BB00380BBB /* textFiles */,
 				C908F9FE1C736627003D025D /* AppDelegate.swift */,
 				C908FA001C736627003D025D /* ViewController.swift */,
 				C908FA021C736627003D025D /* Main.storyboard */,
@@ -484,6 +492,7 @@
 				C908FA251C736627003D025D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C908FA261C736627003D025D /* Build configuration list for PBXNativeTarget "Common ProgramTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +501,7 @@
 				C908FA281C736627003D025D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C908FA291C736627003D025D /* Build configuration list for PBXNativeTarget "Common ProgramUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +510,7 @@
 				C908FA2B1C736627003D025D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
