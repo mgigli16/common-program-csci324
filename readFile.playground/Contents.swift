@@ -24,6 +24,8 @@ while i < realFileArray.count{
 realFileArray
 
 var spaceArray = ["zebra", "pig", "", "elephant", "", "", "", "", "girafe", "dog", "owl", "cat"]
+spaceArray.count
+
 
 i = 0
 while i < spaceArray.count {
@@ -34,7 +36,5 @@ while i < spaceArray.count {
 	}
 }
 
-// var splitSet = NSCharacterSet(charactersInString: " \t\r\n!?.,-")
-// var stringList = fileToBeRead.componentsSeparatedByCharactersInSet(splitSet)
-
 spaceArray
+spaceArray.count
