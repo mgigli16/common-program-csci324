@@ -214,9 +214,11 @@ while i < stringList.count{
 		i++
 	}
 }
-print(stringList)
 
 // search for each word from the file in the dicitonary
+
+// TODO: Some sort of to lower function?
+
 var misspelledWords = [String]()
 for element in stringList {
 	if !FindInDictionary(myDictionary, wordToFind: element, verbose:false){
@@ -224,22 +226,26 @@ for element in stringList {
 	}
 }
 
-// After each word has been compared sort the array
+// After each word has been compared sort the array and print out the misspelled words
 StringQuickSort(&misspelledWords, low: 0, high: misspelledWords.count-1)
-
-print("We found \(misspelledWords.count) misspelled words")
-print(misspelledWords)
-
-// Print out the array one by one asking the user if they'd like to add it to the dictionary
+print("We found \(misspelledWords.count) misspelled words:")
 for word in misspelledWords{
-	print("Would you like to add \"\(word)\" to the dictionary? If so please type yes")
-	var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-	if(choice == "yes"){
-		AddToDictionary(&myDictionary, wordToAdd: word)
-		print("\"\(word)\" was added to the dictionary")
-	}
+	print("\t", word)
 }
 
+print("Would you like to add any of the above words to the dictionary? Please type yes if so.")
+var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+if(choice == "yes"){
+	// Print out the array one by one asking the user if they'd like to add it to the dictionary
+	for word in misspelledWords{
+		print("Would you like to add \"\(word)\" to the dictionary? If so please type yes.")
+		var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+		if(choice == "yes"){
+			AddToDictionary(&myDictionary, wordToAdd: word)
+			print("\"\(word)\" was added to the dictionary")
+		}
+	}
+}
 
 print("Re-writing dictionary to dictionary.txt")
 DictionaryToString(myDictionary, writeToPath: "dictionary.txt")
