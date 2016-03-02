@@ -2,6 +2,7 @@
 //  common.swift
 //
 //  Abby Oliver, Matt Gigliotti, and JT Kearney
+// 
 //  This program implements a spell checker for a file that the
 //  user provides on the command line.
 
@@ -193,15 +194,15 @@ if argArray.count < 2 {
 // argArray is the command line arguments
 // argArray = ["common.swift", arg1, arg2, arg3, ...]
 
-var longString = ReadFile("dictionary2.txt")
-print("Reading dictionary2.txt and building the program dictionary")
+var longString = ReadFile("dictionary.txt")
+print("Reading dictionary.txt and building the program dictionary")
 var myDictionary = BuildDictionary(longString)
 print("Dictionary Built")
 
 
 // Read in from the parameterized file
 var fileToBeRead = ReadFile(argArray[1]);
-var splitSet = NSCharacterSet(charactersInString: " \r\n!?.,-")
+var splitSet = NSCharacterSet(charactersInString: " \t\r\n!?.,-")
 var stringList = fileToBeRead.componentsSeparatedByCharactersInSet(splitSet)
 
 // Get rid of items in the list that are ""
@@ -209,9 +210,11 @@ var i = 0
 while i < stringList.count{
 	if stringList[i] == "" {
 		stringList.removeAtIndex(i)
+	} else {
+		i++
 	}
-	i++
 }
+print(stringList)
 
 // search for each word from the file in the dicitonary
 var misspelledWords = [String]()
@@ -220,25 +223,26 @@ for element in stringList {
 		misspelledWords.append(element)
 	}
 }
-// print(misspelledWords)
 
 // After each word has been compared sort the array
 StringQuickSort(&misspelledWords, low: 0, high: misspelledWords.count-1)
-// print(misspelledWords)
 
 print("We found \(misspelledWords.count) misspelled words")
+print(misspelledWords)
+
 // Print out the array one by one asking the user if they'd like to add it to the dictionary
 for word in misspelledWords{
-	print("Would you like to add \(word) to the dictionary? If so please type yes")
+	print("Would you like to add \"\(word)\" to the dictionary? If so please type yes")
 	var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
 	if(choice == "yes"){
 		AddToDictionary(&myDictionary, wordToAdd: word)
-		print("\(word) was added to the dictionary")
+		print("\"\(word)\" was added to the dictionary")
 	}
 }
 
-print("Re-writing dictionary to dictionary2.txt")
-DictionaryToString(myDictionary, writeToPath: "dictionary2.txt")
+
+print("Re-writing dictionary to dictionary.txt")
+DictionaryToString(myDictionary, writeToPath: "dictionary.txt")
 // Print some nice message that says youre done
 print("Have a nice day! 😝")
 
