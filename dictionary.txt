@@ -3,6 +3,7 @@ ANSI
 ASAP
 ASCII
 ATM's
+Abigail
 Achilles
 Ada
 Ada's
@@ -387,6 +388,7 @@ Germany
 Germany's
 Gibson
 Gibson's
+Gigliotti
 Gipsies
 Gipsy
 Gipsy's
@@ -410,6 +412,7 @@ Hollands
 Honda
 Honda's
 Hz
+I
 I'd
 I'll
 I'm
@@ -446,6 +449,7 @@ Israelis
 Italian
 Italian's
 Italians
+JT
 James
 Januaries
 January
@@ -470,6 +474,8 @@ Julys
 June
 June's
 Junes
+Kearney
+King
 Klein
 Klein's
 Kleinrock
@@ -608,6 +614,7 @@ Oklahoma
 Oklahoma's
 Oklahoman
 Oklahoman's
+Oliver
 Oliver's
 PC
 PC's
@@ -785,6 +792,7 @@ Zealand's
 Zulu
 Zulu's
 Zulus
+a
 aback
 abaft
 abandon

@@ -63,3 +63,9 @@ stringLessThan("Matt", y: "matt")
 StringQuickSort(&stringArray, low: 0, high: stringArray.count-1)
 stringArray.sort()
 
+
+// Testing lowercase and uppercase string
+var sillyString = "This is a string!"
+let yellyString = sillyString.uppercaseString
+let silentString = sillyString.lowercaseString
+

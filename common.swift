@@ -2,6 +2,7 @@
 //  common.swift
 //
 //  Abby Oliver, Matt Gigliotti, and JT Kearney
+// 
 //  This program implements a spell checker for a file that the
 //  user provides on the command line.
 
@@ -19,7 +20,7 @@ func AddToDictionary(inout dict: WordDictionary ,wordToAdd: String) {
 	var newKey = "";
 	
 	// Search to make sure the entry is not a duplicate
-	if(FindInDictionary(dict, wordToFind: wordToAdd, verbose:false)){
+	if(FindInDictionary(dict, wordToFind: wordToAdd, verbose:false, caseCheck: false)){
 		return
 	}
 	
@@ -41,33 +42,51 @@ func AddToDictionary(inout dict: WordDictionary ,wordToAdd: String) {
 }
 
 // FindInDictionary
-// Searches the dictionary that is parameterized for a word that is also parameterized. 
-// Prints an appropriate outcome
-func FindInDictionary(dict: WordDictionary, wordToFind: String, verbose: Bool) -> Bool {
-	var newKey = "";
-	if(wordToFind.characters.count > 0){
-		newKey.append(wordToFind[wordToFind.startIndex]); // first letter
-		if(wordToFind.characters.count >= 2){
-			newKey.append(wordToFind[wordToFind.startIndex.successor()]); // second letter
-		}
-		
-		// If the key already exists check the list, otherwise it cant exist in the dictionary 
-		// so return false
-		if dict[newKey] != nil {
-			for element in dict[newKey]!{
-				if element == wordToFind{
-					if verbose { print("We have found \(wordToFind) in the dictionary")}
-					return true
+// Searches the dictionary dict for the string wordToFind and returns true if
+// the word is found and false otherwise. There are two flags, one for printing
+// output if the word is found (verbose) and one for checking the word for
+// a match despite bizarre capitalization (caseCheck).
+func FindInDictionary(dict: WordDictionary, var wordToFind: String, verbose: Bool, caseCheck: Bool) -> Bool {
+	var iter = 1
+	if caseCheck {
+		iter = 3
+	}
+	var i = 0
+	while i < iter {
+		var newKey = "";
+		if i == 1 { wordToFind = wordToFind.uppercaseString }
+		if i == 2 { wordToFind = wordToFind.lowercaseString }
+		if(wordToFind.characters.count > 0){
+			newKey.append(wordToFind[wordToFind.startIndex]); // first letter
+			if(wordToFind.characters.count >= 2){
+				newKey.append(wordToFind[wordToFind.startIndex.successor()]); // second letter
+			}
+			
+			// If the key already exists check the list, otherwise it cant exist in the dictionary
+			// so return false
+			if dict[newKey] != nil {
+				for element in dict[newKey]!{
+					var elementCheck = element;
+					if i == 1 { elementCheck = element.uppercaseString }
+					if i == 2 { elementCheck = element.lowercaseString }
+					if elementCheck == wordToFind{
+						return true
+					}
 				}
 			}
 		}
+		if verbose {
+			print("\(wordToFind) was not found in the dictionary")
+		}
+		i++
 	}
-	if verbose {print("\(wordToFind) was not found in the dictionary")}
 	return false
 }
 
 // BuildDictionary
-// Builds a dictionary from ONE string
+// Builds a dictionary from a single string that is passed from the ReadFile function
+// and splits the string on the new line in order to pick out the words. Calls 
+// AddToDIctionary for each word in the string.
 func BuildDictionary(documentString: String) -> WordDictionary {
 	let stringList = documentString.characters.split{$0 == "\r\n"}.map(String.init);
 	var newDict: WordDictionary = [:]
@@ -78,7 +97,8 @@ func BuildDictionary(documentString: String) -> WordDictionary {
 }
 
 // DictionaryToString
-// Converts Dictionary into a string and then writes it to a file
+// Converts the current data structure with added words to a string to be exported to the
+// dictionary txt file.
 func DictionaryToString(dict: WordDictionary, writeToPath: String){
 	var beWritten = "";
 	for currentKey in dict.keys.sort() {
@@ -92,6 +112,7 @@ func DictionaryToString(dict: WordDictionary, writeToPath: String){
 }
 
 // From http://stackoverflow.com/questions/24004776/input-from-the-keyboard-in-command-line-application
+// This function handles keyboard input from the user.
 func input() -> String {
 	let keyboard = NSFileHandle.fileHandleWithStandardInput()
 	let inputData = keyboard.availableData
@@ -106,7 +127,7 @@ func ReadFile(path:String) -> String {
 	do {
 		let data = try NSString(contentsOfFile: path, encoding: NSASCIIStringEncoding)
 		
-		// If a value was returned, print it.
+		// return the string from the file
 		return data as String
 	} catch {
 		print ("Error reading from file")
@@ -193,53 +214,77 @@ if argArray.count < 2 {
 // argArray is the command line arguments
 // argArray = ["common.swift", arg1, arg2, arg3, ...]
 
-var longString = ReadFile("dictionary2.txt")
-print("Reading dictionary2.txt and building the program dictionary")
+
+// Read in from dicitonary.txt
+var longString = ReadFile("dictionary.txt")
+print("Reading dictionary.txt and building the program dictionary")
 var myDictionary = BuildDictionary(longString)
 print("Dictionary Built")
 
-
-// Read in from the parameterized file
+// Read the parameterized file and put each word in an array
 var fileToBeRead = ReadFile(argArray[1]);
-var splitSet = NSCharacterSet(charactersInString: " \r\n!?.,-")
+var splitSet = NSCharacterSet(charactersInString: " \t\r\n!?.,-\"():;")
 var stringList = fileToBeRead.componentsSeparatedByCharactersInSet(splitSet)
+print("Size of the array created for the file is \(stringList.count)")
 
-// Get rid of items in the list that are ""
+// Get rid of items in the list that are null ("")
 var i = 0
 while i < stringList.count{
 	if stringList[i] == "" {
 		stringList.removeAtIndex(i)
+	} else {
+		i++
 	}
+}
+
+// Search for each word from the file in the dicitonary
+var misspelledWords = [String]()
+for element in stringList {
+	if !FindInDictionary(myDictionary, wordToFind: element, verbose:false, caseCheck: true) {
+		if(!misspelledWords.contains(element)){
+			misspelledWords.append(element)
+		}
+	}
+}
+
+// After each word has been compared sort the array and print out the misspelled words
+StringQuickSort(&misspelledWords, low: 0, high: misspelledWords.count-1)
+
+// Show which misspelled words were found
+switch misspelledWords.count {
+case 0: print("We didn't find any misspelled words in the text file.")
+	break
+case 1: print("We found 1 misspelled word in the text file.")
+	break
+default: print("We found \(misspelledWords.count) misspelled words:")
+}
+
+// Print the list of misspelled words
+i = 0;
+for word in misspelledWords{
+	print("\t[\(i+1)]", word)
 	i++
 }
 
-// search for each word from the file in the dicitonary
-var misspelledWords = [String]()
-for element in stringList {
-	if !FindInDictionary(myDictionary, wordToFind: element, verbose:false){
-		misspelledWords.append(element)
-	}
-}
-// print(misspelledWords)
-
-// After each word has been compared sort the array
-StringQuickSort(&misspelledWords, low: 0, high: misspelledWords.count-1)
-// print(misspelledWords)
-
-print("We found \(misspelledWords.count) misspelled words")
-// Print out the array one by one asking the user if they'd like to add it to the dictionary
-for word in misspelledWords{
-	print("Would you like to add \(word) to the dictionary? If so please type yes")
+if misspelledWords.count != 0{
+	print("Would you like to add anything to the dictionary? Please type yes if so.")
 	var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
 	if(choice == "yes"){
-		AddToDictionary(&myDictionary, wordToAdd: word)
-		print("\(word) was added to the dictionary")
+		// Print out the array one by one asking the user if they'd like to add it to the dictionary
+		for word in misspelledWords{
+			print("Would you like to add \"\(word)\" to the dictionary? If so please type yes.")
+			var choice = input().stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+			if(choice == "yes"){
+				AddToDictionary(&myDictionary, wordToAdd: word)
+				print("\"\(word)\" was added to the dictionary")
+			}
+		}
 	}
 }
 
-print("Re-writing dictionary to dictionary2.txt")
-DictionaryToString(myDictionary, writeToPath: "dictionary2.txt")
-// Print some nice message that says youre done
+// Rewrite the program dictionary from memory back over dictionary.txt
+print("Re-writing dictionary to dictionary.txt")
+DictionaryToString(myDictionary, writeToPath: "dictionary.txt")
 print("Have a nice day! 😝")
 
 
