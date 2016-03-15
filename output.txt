@@ -1,4 +1,4 @@
-IAC 
+AC 
  Optional(["ACM"])
 AN 
  Optional(["ANSI"])
@@ -13,7 +13,7 @@ Ad
 Af 
  Optional(["Afghanistan", "Afghanistan\'s", "Africa", "Africa\'s", "African", "African\'s", "Africans"])
 Ai 
- Optional(["Airedale", "Airedale\'s"])
+ Optionsal(["Airedale", "Airedale\'s"])
 Al 
  Optional(["Alabama", "Alabama\'s", "Alabamian", "Alabamian\'s", "Alaska", "Alaska\'s", "Albania", "Albania\'s", "Albanian", "Albanian\'s", "Albanians", "Alcibiades", "Alden", "Alden\'s", "Algeria", "Algeria\'s", "Algerian", "Algerian\'s", "Algol", "Algol\'s", "Allah", "Allah\'s", "Alyssa", "Alyssa\'s"])
 Am 

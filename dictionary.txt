@@ -3,6 +3,7 @@ ANSI
 ASAP
 ASCII
 ATM's
+Abigail
 Achilles
 Ada
 Ada's
@@ -387,6 +388,7 @@ Germany
 Germany's
 Gibson
 Gibson's
+Gigliotti
 Gipsies
 Gipsy
 Gipsy's
