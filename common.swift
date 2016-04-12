@@ -5,6 +5,10 @@
 // 
 //  This program implements a spell checker for a file that the
 //  user provides on the command line.
+// https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0
+// The above link is the online version of the iBook we used as a reference.
+// Other funcitons were looked up on stackoverflow or similar sites and are cited
+// in the function prologue.
 
 import Foundation
 
